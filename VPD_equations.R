@@ -14,7 +14,8 @@
 #### Base equation: ####
 # temperature- in C
 # relative_humidity in percent
-# (610.78*exp(17.2694*temperature/(temperature+237.3)))*(1-(relative_humidity/100))
+# output- VPD in KPa
+# (0.61078*exp(17.2694*temperature/(temperature+237.3)))*(1-(relative_humidity/100))
 
 
 #### Climate Data
@@ -22,7 +23,8 @@
 clim<-read.csv(file="CNAoutput.csv",header=T)
 # many different ways to calculate, e.g.,:
 # "summer maximum"
-clim$VPD_max_sm <- (610.78*exp(17.2694*clim$Tmax_sm/(clim$Tmax_sm+237.3)))*(1-(clim$RH_sm/100))
+clim$VPD_max_sm <- (0.61078*exp(17.2694*clim$Tmax_sm/(clim$Tmax_sm+237.3)))*(1-(clim$RH_sm/100))
 # "summer average"
-clim$VPD_ave_sm <- (610.78*exp(17.2694*clim$Tave_sm/(clim$Tave_sm+237.3)))*(1-(clim$RH_sm/100))
+clim$VPD_ave_sm <- (0.61078*exp(17.2694*clim$Tave_sm/(clim$Tave_sm+237.3)))*(1-(clim$RH_sm/100))
+
 # etc.
